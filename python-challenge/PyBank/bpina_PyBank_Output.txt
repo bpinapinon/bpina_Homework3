@@ -1,0 +1,7 @@
+Results
+----------
+Total months in dataset: 41
+Total: $18971412
+Average Change: $462717.37
+Greatest INCREASE in revenue: $1195111
+Greatest DECREASE in revenue: $-1172384
