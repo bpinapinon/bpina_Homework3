@@ -88,7 +88,7 @@ with open(csv_Path, newline = "") as csv_File:
     # Add a vote to the Candidates count
     CandidateVotes[CandidateName] = CandidateVotes[CandidateName] + 1
 
-    
+
     # Loop through the candidates to determine winner
     for y in CandidateVotes:
       
@@ -102,9 +102,14 @@ with open(csv_Path, newline = "") as csv_File:
         WinningCandidate = CandidateName
         WinningPercent = round((WinningVoteCount / TotalVotes) * 100 , 2)
 
+  # Loop through candidates and print votes and percentage
+  for k, v in CandidateVotes.items():
+    Percent = (v / TotalVotes) * 100
+    print(k , v , str(round(Percent,2)) + "%")
+    
+
 # Print Output  
 print(f'\nTotal Votes: {TotalVotes}')
-print(f'\nCandidateVotes: {CandidateVotes}')  # How do i generate % and put them on different rows?
 print(f'\nWinner: {WinningCandidate} with {WinningVoteCount} votes ({WinningPercent}%).')
 
 
@@ -121,6 +126,14 @@ with open(csv_Output_Path, "w", newline = "") as csv_File_Out:
     csv_Writer.writerow(["Results"])
     csv_Writer.writerow(["----------"])
     csv_Writer.writerow(["Total Votes: " + str(TotalVotes)])
-    csv_Writer.writerow([CandidateVotes])
+    csv_Writer.writerow(["----------"])
+
+    # Loop through candidates and print votes and percentage
+    for k, v in CandidateVotes.items():
+      Percent = (v / TotalVotes) * 100
+      csv_Writer.writerow([k , v, str(round(Percent,2)) + "%"]) 
+
+    # Output winner
+    csv_Writer.writerow(["----------"])
     csv_Writer.writerow(["Winner: " + WinningCandidate + " with " + 
                           str(WinningVoteCount) + " votes (" + str(WinningPercent) + "%)."])
